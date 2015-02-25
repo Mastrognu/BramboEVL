@@ -1,3 +1,17 @@
+context District {
+
+	constraint MaxStatistics {
+	
+		guard : self.data.getAllOfType('NumPostDistr').isDefined()
+	
+		check : count(self.data.getAllOfType('NumPostDistr')) < 2
+	
+		message : 'Too many statistics of type NumPostDistr.'
+	
+	}
+
+}
+
 context File {
 
   constraint HasName {
