@@ -9,18 +9,63 @@ context District {
 		message : 'Too many statistics of type NumPostDistr.'
 	
 	}
+	
+	constraint NoOverlaps {
+	
+		check : forAll(d1, d2 | d1 <> d2 implies not (d1.coordBx < d2.coordBx and d1.coordEx > d2.coordBx
+				and d1.coordBy < d2.coordBy and d1.coordEy > d2.coordBy) and 
+				not (d1.coordBx < d2.coordEx and d1.coordEx > d2.coordEx
+				and d1.coordBy < d2.coordEy and d1.coordEy > d2.coordEy))
+				
+		message : 'There are overlapping districts.'
+	
+	}
+	
+	constraint UniqueDistrictName {
+	
+		guard : self.name.isDefined()
+	
+		check : forAll(d1, d2 | d1 <> d2 implies d1.name <> d2.name)
+	
+		message : 'The name '+ self.name +' is already taken.'
+		
+	}
+}
+
+context MonitoredCity {
+
+	constraint UniquePlaceName {
+	
+		guard : self.name.isDefined()
+	
+		check : forAll(p1, p2 | p1 <> p2 implies p1.name <> p2.name)
+	
+		message : 'The name '+ self.name +' is already taken.'
+		
+	}
 
 }
 
-context File {
-
-  constraint HasName {
-
-      check : self.name.isDefined()
-
-      message : 'Unnamed ' + self.eClass().name + ' not allowed'
-
-  }
+context Place {
+	
+	constraint DuplicateCategory{
+	
+		check : self.categories.forAll(c1, c1 | c1 <> c2 implies c1.type <> c2.type)
+		
+		message : 'Duplicate category found.'
+	
+		fix {
+		
+			title : 'Eliminate duplicate.'
+			
+			do {
+			
+				delete (self);
+			
+			}
+		
+		}
+	}
 
 }
 
