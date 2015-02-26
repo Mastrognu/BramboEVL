@@ -8,6 +8,11 @@
             constraints="resident.evl"
             namespaceURI="/BramboProject2k15/model/CitySensing.ecore">
       </constraintsBinding>
+      <constraintsBinding
+            compose="true"
+            constraints="within.evl"
+            namespaceURI="/BramboProject2k15/model/SocialResource.ecore">
+      </constraintsBinding>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">
