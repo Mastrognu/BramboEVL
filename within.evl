@@ -1,8 +1,22 @@
-context Coordinates {
-	constraint NoOverlapping {	
-		check : forAll(c1, c2 | c1 <> c2 implies not 
-			(c1.coordx = c2.coordx and c1.coordy = c2.coordy))
-
-		message : 'There are overlapping coordinates.'
+context Post {
+	
+	constraint DuplicateCategory{
+	
+		check : self.categories.forAll(c1, c1 | c1 <> c2 implies c1.type <> c2.type)
+		
+		message : 'Duplicate category found.'
+	
+		fix {
+		
+			title : 'Eliminate duplicate.'
+			
+			do {
+			
+				delete (self);
+			
+			}
+		
+		}
 	}
+
 }

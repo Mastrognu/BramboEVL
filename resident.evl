@@ -2,11 +2,41 @@ context District {
 
 	constraint MaxStatistics {
 	
-		guard : self.data.getAllOfType('NumPostDistr').isDefined()
+		guard : self.data.getAllOfType('NumPost').isDefined()
 	
-		check : count(self.data.getAllOfType('NumPostDistr')) < 2
+		check : count(self.data.getAllOfType('NumPost')) < 2
 	
-		message : 'Too many statistics of type NumPostDistr.'
+		message : 'Too many statistics of type NumPost'
+	
+	}
+	
+	constraint MaxStatistics2 {
+	
+		guard : self.data.getAllOfType('NumPostLang').isDefined()
+	
+		check : count(self.data.getAllOfType('NumPostLang')) < 2
+	
+		message : 'Too many statistics of type NumPostLang'
+	
+	}
+	
+	constraint MaxStatistics3 {
+	
+		guard : self.data.getAllOfType('NumPhoto').isDefined()
+	
+		check : count(self.data.getAllOfType('NumPhoto')) < 2
+	
+		message : 'Too many statistics of type NumPhoto'
+	
+	}
+	
+	constraint MaxStatistics4 {
+	
+		guard : self.data.getAllOfType('NumPostTimeSlot').isDefined()
+	
+		check : count(self.data.getAllOfType('NumPostTimeSlot')) < 2
+	
+		message : 'Too many statistics of type NumPostTimeSlot'
 	
 	}
 	
