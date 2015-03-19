@@ -6,12 +6,12 @@
       <constraintsBinding
             compose="true"
             constraints="resident.evl"
-            namespaceURI="/BramboProject2k15/model/CitySensing.ecore">
+            namespaceURI="/ATLProva/CitySensing.ecore">
       </constraintsBinding>
       <constraintsBinding
             compose="true"
             constraints="within.evl"
-            namespaceURI="/BramboProject2k15/model/SocialResource.ecore">
+            namespaceURI="/ATLProva/SocialResource.ecore">
       </constraintsBinding>
    </extension>
    <extension

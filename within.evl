@@ -15,8 +15,58 @@ context Post {
 				delete (self);
 			
 			}
-		
 		}
 	}
+}
 
+context Hashtag {
+
+	constraint BeginWithHash {
+		
+		guard : self.name.isDefined()
+		
+		check : forAll( h | h.StartsWith('#'))
+		
+		message : 'Hashtag must begin with # symbol'
+		
+		fix {
+			
+			title : 'Adding # symbol'
+			
+			do {
+				
+				self.name = '#'.concat(self.name);
+			}
+		}
+	}
+}
+
+context Mention {
+
+	constraint BeginWithAt {
+		
+		guard : self.name.isDefined()
+		
+		check : forAll( h | h.StartsWith('@'))
+		
+		message : 'Hashtag must begin with @ symbol'
+		
+		fix {
+			
+			title : 'Adding @ symbol'
+			
+			do {
+				
+				self.name = '@'.concat(self.name);
+			}
+		}
+	}
+}
+
+context Place {
+	
+	constraint IsInDistrict {
+		
+		check : self.name.isDefined()
+	}
 }
