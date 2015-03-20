@@ -13,9 +13,15 @@ context Post {
 			do {
 			
 				delete (self);
-			
 			}
 		}
+	}
+	
+	constraint UniqueAuthor {
+		
+		check : count(self.author) == 1
+		
+		message : 'Author must be unique'	
 	}
 }
 
@@ -49,7 +55,7 @@ context Mention {
 		
 		check : forAll( h | h.StartsWith('@'))
 		
-		message : 'Hashtag must begin with @ symbol'
+		message : 'Mention must begin with @ symbol'
 		
 		fix {
 			
@@ -63,6 +69,7 @@ context Mention {
 	}
 }
 
+--- Dont' remeber..
 context Place {
 	
 	constraint IsInDistrict {
