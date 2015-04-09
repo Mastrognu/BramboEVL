@@ -5,12 +5,12 @@
          point="org.eclipse.epsilon.evl.emf.validation">
       <constraintsBinding
             compose="true"
-            constraints="resident.evl"
+            constraints="CitySensingValidator.evl"
             namespaceURI="/ATLProva/CitySensing.ecore">
       </constraintsBinding>
       <constraintsBinding
             compose="true"
-            constraints="within.evl"
+            constraints="SocialResourceValidator.evl"
             namespaceURI="/ATLProva/SocialResource.ecore">
       </constraintsBinding>
    </extension>
@@ -25,7 +25,7 @@
          point="org.eclipse.epsilon.evl.emf.validation">
       <constraintsBinding
             compose="true"
-            constraints="resident.evl"
+            constraints="CitySensingValidator.evl"
             namespaceURI="/BramboProject2k15/model/SocialResource.ecore">
       </constraintsBinding>
    </extension>
